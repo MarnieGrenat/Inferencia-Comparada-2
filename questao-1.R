@@ -12,7 +12,7 @@ library(extraDistr)
 library(stats)
 
 # Parâmetros 
-a <- 0
+a <- 2
 b <- 2
 m <- 1
 n <- 5000
@@ -90,18 +90,26 @@ hist(y, 40,
      xlim = c(a, b),
      main = 'RTRIANG(0, 1, 2)',
      xlab = 'Valor', ylab = 'Densidade'
-     )
+)
+par(mfrow = c(1, 1))
+
 # Overlap (para identificar D)
+hist(y, 40,
+     freq = FALSE,
+     col = rgb(0, 0.3, 1),
+     xlim = c(a, b),
+     main = 'Overlap entre ITRIANG(0, 1, 2) e RTRIANG(0, 1, 2)',
+     xlab = 'Valor', ylab = 'Densidade'
+)
+
 hist(x, 40,
      freq = FALSE,
      col = rgb(1, 0.3, 0, 0.3), 
      xlim = c(a, b),
-     main = 'ITRIANG(0, 1, 2)',
      xlab = 'Valor',
      ylab = 'Densidade',
      add = TRUE
 )
-par(mfrow = c(1, 1))
 
 ## Teste KS
 ks.test(x, y)
